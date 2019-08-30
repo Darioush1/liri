@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.1.0",
     "spotify": "^0.3.0"
   }
 }
