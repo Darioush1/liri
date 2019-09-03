@@ -36,15 +36,18 @@ function songSearch() {
 
 
 
- function bandsHere() {
-    
-    
+function bandsHere() {
+
     var concertUrl = 'https://rest.bandsintown.com/artists/' + input2 + '/events?app_id=codingbootcamp';
     axios.get(concertUrl).then(function (response) {
         var jsonConcertData = response.data;
-        for (var i = 0; i < jsonConcertData.length; i++) {
-            var show = jsonConcertData[i];
-            console.log(input2 + ' will play at ' + show.venue.name + ' in ' + show.venue.region + ' on ' + show.datetime)
+        if (jsonConcertData[0] === null) {
+            console.log(input2 + 'doesn\'t have any shows planned.');
+        } else {
+            for (var i = 0; i < jsonConcertData.length; i++) {
+                var show = jsonConcertData[i];
+                console.log(input2 + ' will play at ' + show.venue.name + ' in ' + (show.venue.region || show.venue.country) + ' on ' + show.datetime)
+            }
         }
     }).catch(function (error) {
         if (error.response) {
@@ -73,7 +76,6 @@ switch (input1) {
         break;
     case 'concerts':
         console.log("what concert?");
-        console.log('initial call' + input2)
         bandsHere();
 
 };
