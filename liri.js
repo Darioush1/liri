@@ -71,7 +71,10 @@ function bandsHere() {
         } else {
             for (var i = 0; i < jsonConcertData.length; i++) {
                 var show = jsonConcertData[i];
-                console.log('Your artist/s will play at ' + show.venue.name + ' in ' + (show.venue.region || show.venue.country) + ' on ' + show.datetime)
+                let date;
+                date = moment(show.datetime).format('MMMM Do YYYY');
+                console.log(date);
+                console.log('Your artist/s will play at ' + show.venue.name + ' in ' + (show.venue.region || show.venue.country) + ' on ' + date)
             }
         }
     }).catch(function (error) {
