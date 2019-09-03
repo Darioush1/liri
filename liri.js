@@ -9,7 +9,6 @@ moment().format();
 var spotify = new Spotify(
     keys.spotify
 );
-var concertURL = '';
 
 console.log('Welcome, my name is Liri! Are you looking for movies, songs, or concerts?')
 
@@ -37,15 +36,15 @@ function songSearch() {
 
 
 
- function bandsHere(input2) {
+ function bandsHere() {
     
-    concertUrl = 'https://rest.bandsintown.com/artists/' + input2 + '/events?app_id=codingbootcamp';
-    console.log('concert  ' + concertURL)
-    axios.get('https://rest.bandsintown.com/artists/rezz/events?app_id=codingbootcamp').then(function (response) {
+    
+    var concertUrl = 'https://rest.bandsintown.com/artists/' + input2 + '/events?app_id=codingbootcamp';
+    axios.get(concertUrl).then(function (response) {
         var jsonConcertData = response.data;
         for (var i = 0; i < jsonConcertData.length; i++) {
             var show = jsonConcertData[i];
-            console.log('Rezz will play at ' + show.venue.name + ' in ' + show.venue.region + ' on ' + show.datetime)
+            console.log(input2 + ' will play at ' + show.venue.name + ' in ' + show.venue.region + ' on ' + show.datetime)
         }
     }).catch(function (error) {
         if (error.response) {
@@ -74,39 +73,10 @@ switch (input1) {
         break;
     case 'concerts':
         console.log("what concert?");
-
+        console.log('initial call' + input2)
         bandsHere();
 
 };
 
 
 
-
-// console.log(input1);
-// console.log(input2);
-
-
-//    sorting and running throu the whole argv
-// for (var i = 2; i < input.length; i++) {
-//     myArray.push(parseInt(input[i]));
-// };
-
-// function sortNumber(a, b) {
-//     return(a - b)
-// };
-
-// console.log(myArray);
-// console.log(myArray.sort(sortNumber))
-
-    //creat a text file and run through the data
-// fileSystem.readFile('movies.txt', function(err, fileContent) {
-//     if (err) {
-//         return console.log(err);
-//     }
-
-//     var dataArray = fileContent.split(', ');
-
-//     for (var i = 0; i < dataArray.length; i++) {
-//         console.log(dataArray[i])
-//     }
-// })
