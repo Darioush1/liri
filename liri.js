@@ -67,8 +67,8 @@ function movieSearch() {
         function (response) {
             console.log('Title: ' + response.data.Title);
             console.log('Year: ' + response.data.Year)
-            console.log('Rating: ' + response.data.imdbRating);
-//            console.log('RT RAting: ' + response.data.ratings.source:)
+            console.log('IMDB Rating: ' + response.data.imdbRating);
+            console.log('RT RAting: ' + response.data.Ratings[1].Value)
             console.log('Country: ' + response.data.Country);
             console.log('Language: ' + response.data.Language);
             console.log('Plot: ' + response.data.Plot);
@@ -79,11 +79,12 @@ function movieSearch() {
 
 switch (input1) {
     case 'songs':
-        console.log("What song would you like to learn about? (please type it in correctly, if you got this far in bash I imagine you know how to make a request)");
+        
         if (input2 === undefined) {
-
-        }
+            console.log("What song would you like to learn about? (please type it in correctly, if you got this far in bash I imagine you know how to make a request)")
+        } else {
         songSearch();
+        }
         break;
     case 'movies':
         console.log("What kind of movie?")
