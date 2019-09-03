@@ -62,6 +62,20 @@ function bandsHere() {
     })
 };
 
+function movieSearch() {
+    axios.get("http://www.omdbapi.com/?t=" + input2 + "&y=&plot=short&apikey=trilogy").then(
+        function (response) {
+            console.log('Title: ' + response.data.Title);
+            console.log('Year: ' + response.data.Year)
+            console.log('Rating: ' + response.data.imdbRating);
+//            console.log('RT RAting: ' + response.data.ratings.source:)
+            console.log('Country: ' + response.data.Country);
+            console.log('Language: ' + response.data.Language);
+            console.log('Plot: ' + response.data.Plot);
+            console.log('Actors: ' +  response.data.Actors)
+        })
+};
+
 
 switch (input1) {
     case 'songs':
@@ -73,6 +87,7 @@ switch (input1) {
         break;
     case 'movies':
         console.log("What kind of movie?")
+        movieSearch();
         break;
     case 'concerts':
         console.log("what concert?");
